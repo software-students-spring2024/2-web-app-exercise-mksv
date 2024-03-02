@@ -20,8 +20,6 @@ print(os.getenv("MONGO_URI"))
 cxn = pymongo.MongoClient(os.getenv("MONGO_URI"))
 db = cxn[os.getenv("MONGO_DBNAME")]
 
-# cxn = pymongo.MongoClient('localhost',27017)
-# db = pymongo.client.flask_database
 
 
 try:
@@ -40,12 +38,10 @@ def home():
     Route for the home page
     """
     if request.method == 'POST':
-        # Retrieve filter parameters from form submission
         search_query = request.form.get('search')
         price_filter = request.form.get('price_filter')
         created_date_filter = request.form.get('created_date_filter')
         edited_date_filter = request.form.get('edited_date_filter')
-        # Redirect to the search_product route with filter parameters
         return redirect(url_for('search_product', 
                                 search=search_query,
                                 price_filter=price_filter,
@@ -53,8 +49,8 @@ def home():
                                 edited_date_filter = edited_date_filter))
     docs = db.game_store.find({}).sort(
         "created_date", -1
-    ).limit(12)  # sort in descending order of created_at timestamp
-    return render_template("index.html", docs=docs)  # render the hone template
+    ).limit(12) 
+    return render_template("index.html", docs=docs)
 
 @app.route("/search", methods=["GET"])
 def search_product():
@@ -82,7 +78,6 @@ def search_product():
     if edited_date_filter:
         sort_criteria.append(edited_date_filter)
 
-    # Adjust the query based on search_query and sort criteria
     query = {"name": {"$regex": search_query, "$options": "i"}} if search_query else {}
     docs = db.game_store.find(query)
     if sort_criteria:
