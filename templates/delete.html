@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Delete Game</h1>
+    <form method="post">
+        <label for="title">Game Title:</label><br>
+        
+        <select name="title" id="title">
+            <option value="Game 1">Game 1</option>
+            <option value="Game 2">Game 2</option>
+            <option value="Game 3">Game 3</option>
+
+        </select><br>
+
+        <button type="submit">Update Game</button>
+    </form>
+</body>
+</html>
