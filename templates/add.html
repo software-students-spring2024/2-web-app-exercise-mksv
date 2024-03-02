@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gamestore App</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}"/>
+</head>
+<body>
+    <!-- <h1>MongoDB Flask App</h1> -->
+
+
+    <div class="header">
+        <h1> Gamestore Admin </h1>
+        <br>
+    </div>
+
+    <hr>
+    <div class="content">
+        <form method="POST">
+            <p>
+        	<label for="content">Enter name:</label>
+            </p>
+            <p> 
+            	<input class="nameBar" type="text" name="name" placeholder="enter name..." size=10 required>
+            </p>
+            <br/>
+            <label for="content">Price: </label>
+            <input type="number" name="price" min="1" required/>
+            <br/>
+            <br/>
+            <p>
+                <label for="content">Enter game description: </label>
+            </p>
+            <textarea type="text" name="description" placeholder="enter description..." required rows="5" cols="55"></textarea>
+            <br/>
+            <br/>
+            <button type="submit">Submit </button>
+        </form>
+	<hr>			
+    </div>
+
+</body>
+</html>
