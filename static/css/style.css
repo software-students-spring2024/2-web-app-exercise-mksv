@@ -1,0 +1,157 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000; 
+  color: #000000;
+}
+
+.container {
+  border: 3px solid #000000;;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #000000;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+header {
+  display: flex;
+  flex-direction: row;
+  gap: 10em; /* space between elements in the row */
+  justify-content: space-between; /* align along the flex direction */
+  align-items: center; /* align across the flex direction */
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.logo {
+  font-size: 50px; 
+  color: #9700d2; 
+  margin: 0;
+}
+
+nav a {
+  color: #cccccc;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  color: white;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Search and Filters Styles */
+.search-filter-section {
+  margin: 20px 0;
+}
+
+.search-filter-section form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-filter-section input[type="text"],
+.search-filter-section select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+}
+
+.search-filter-section button {
+  padding: 10px 15px;
+  background-color: #76b900;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-filter-section button:hover {
+  background-color: #659700;
+}
+
+/* Game Listing Styles */
+.game-listing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap as needed */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box
+}
+
+.game-item {
+  flex: 0 0 calc(20% - 20px); /* Does not grow, does not shrink, starts at calculated width */
+  margin-bottom: 20px; /* Space between rows */
+  padding: 10px; /* Padding inside the game item */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+  .game-item {
+    flex-basis: calc(25% - 20px); /* 4 games per row */
+  }
+}
+
+@media (max-width: 992px) {
+  .game-item {
+    flex-basis: calc(33.333% - 20px); /* 3 games per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .game-item {
+    flex-basis: calc(50% - 20px); /* 2 games per row */
+  }
+}
+
+@media (max-width: 576px) {
+  .game-item {
+    flex-basis: 100%; /* 1 game per row */
+  }
+}
+
+
+.search-results h2 {
+  background-color: #f8f8f8; /* Example background color */
+  padding: 10px; /* Example padding */
+  border-bottom: 1px solid #eaeaea; /* Example bottom border */
+  margin-bottom: 20px; /* Space between the results bar and the first game item */
+}
+
+/* You might want to adjust the h2 inside the .game-item to h3 or another element for semantic HTML structure */
+.game-item h3 {
+  margin-top: 0; /* Adjust top margin as needed */
+}
+
+.subtitle {
+  font-size: 24px; /* Set the size of the subtitle text */
+  color: #a69d9d; /* Subdued text color for the subtitle */
+  font-weight: bold; /* Make the subtitle bold */
+  margin-top: 10px; /* Add some space above the subtitle */
+  text-transform: uppercase; /* Optional: transform text to uppercase for stylistic preference */
+  font-style: italic; /* Optional: make the subtitle italic */
+}
+
+
+.text {
+  color: #ffffff; /* Subdued text color for the subtitle */
+}

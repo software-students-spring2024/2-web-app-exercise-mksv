@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<div class="container">
+    <div class="subtitle">Current Available Games</div>
+  </div>
+  
+
+<section class="game-listing">
+    {% if docs %}
+      {% for doc in docs %}
+        <div class="game-item">
+          <h2>{{ doc.name }}</h2>
+          <p>{{ doc.description }}</p>
+          <p>Price: ${{ doc.price }}</p>
+          <p>Added on: {{ doc.created_date }}</p>
+          <p>Edited on: {{ doc.edited_date }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No games found.</p>
+    {% endif %}
+  </section>
+{% endblock %}
