@@ -31,6 +31,6 @@ def edit_game(game_id):
         }
 
         # Update the document in the database
-        db.games.update_one({"_id": ObjectId(game_id)}, {"$set": update_data})
+        db.games.update_one({"_id": ObjectId(game_id)}, {"$set": update_game})
 
         return redirect(url_for("home"))
