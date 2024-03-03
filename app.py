@@ -108,6 +108,20 @@ def aboutus():
     return render_template("aboutus.html")
 
 
+@app.route("/add", methods=['GET', 'POST'])
+def add():
+    if request.method == 'POST':
+        name = request.form['name']
+        price = request.form['price']
+        description = request.form['description']
+    docs = {'name': name, 'price': price, 'description': description, "created_date": datetime.datetime.utcnow()}
+    db.game_store.insert_one(docs)
+    #docs = db.game_store.find()
+    #return render_template('add.html', docs=docs)
+    return redirect(
+        url_for("home")
+    )
+
 if __name__ == "__main__":
     # use the PORT environment variable, or default to 5000
     FLASK_PORT = os.getenv("FLASK_PORT", "5000")
