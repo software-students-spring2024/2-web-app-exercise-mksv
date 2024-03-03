@@ -9,8 +9,8 @@
         <div class="box">
         <h3> ADD GAME FOR SALE </h3> 
         <h5> please fill out ALL fields </h5>
-        <form method="POST">
-            <br>
+        <form method="POST" action="{{ url_for('add') }}>
+        <br>
             <p>
                 <label for="content">Enter name:</label>
                 <input class="nameBar" type="text" name="name" placeholder="enter name..." size=10 required>
