@@ -1,0 +1,156 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000; 
+  color: #000000;
+}
+
+.container {
+  border: 3px solid #000000;;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #000000;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+header {
+  display: flex;
+  flex-direction: row;
+  gap: 10em; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.logo {
+  font-size: 50px; 
+  color: #9700d2; 
+  margin: 0;
+}
+
+nav a {
+  color: #cccccc;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  color: white;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+.search-filter-section {
+  margin: 20px 0;
+}
+
+.search-filter-section form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-filter-section input[type="text"],
+.search-filter-section select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+}
+
+.search-filter-section button {
+  padding: 10px 15px;
+  background-color: #76b900;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-filter-section button:hover {
+  background-color: #659700;
+}
+
+
+.game-listing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; 
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box
+}
+
+.game-item {
+  flex: 0 0 calc(20% - 20px); 
+  margin-bottom: 20px;
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+
+@media (max-width: 1200px) {
+  .game-item {
+    flex-basis: calc(25% - 20px); 
+  }
+}
+
+@media (max-width: 992px) {
+  .game-item {
+    flex-basis: calc(33.333% - 20px); 
+  }
+}
+
+@media (max-width: 768px) {
+  .game-item {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .game-item {
+    flex-basis: 100%; 
+  }
+}
+
+
+.search-results h2 {
+  background-color: #f8f8f8; 
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea; 
+  margin-bottom: 20px; 
+}
+
+
+.game-item h3 {
+  margin-top: 0; 
+}
+
+.subtitle {
+  font-size: 24px; 
+  color: #a69d9d;
+  font-weight: bold; 
+  margin-top: 10px; 
+  text-transform: uppercase; 
+  font-style: italic;
+}
+
+
+.text {
+  color: #ffffff;
+}
