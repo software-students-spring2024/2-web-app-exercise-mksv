@@ -65,10 +65,9 @@ The project will consist of two sprints, i.e. increments of work, each of which 
 
 A link to the Projects page should be included in the `README.md` file.
 
-This project is to make an e-commmerce site for video games
-
 ![simple task board](images/simple-task-board.png)
 
+### Daily standups
 
 Teams must hold 3 or more "daily" standup meetings per week.
 
