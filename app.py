@@ -1,14 +1,11 @@
 import os
 import datetime
 from flask import Flask, render_template, request, redirect, url_for, make_response
-
 import pymongo
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
 
 load_dotenv()
-
-
 
 app = Flask(__name__)
 
@@ -20,8 +17,6 @@ print(os.getenv("MONGO_URI"))
 cxn = pymongo.MongoClient(os.getenv("MONGO_URI"))
 db = cxn[os.getenv("MONGO_DBNAME")]
 
-
-
 try:
     # verify the connection works by pinging the database
     cxn.admin.command("ping")  # The ping command is cheap and does not require auth.
@@ -29,7 +24,6 @@ try:
 except Exception as e:
     # the ping command failed, so the connection is not available.
     print(" * MongoDB connection error:", e)  # debug
-    
     
     
 @app.route("/", methods=['GET', 'POST'])
@@ -53,6 +47,7 @@ def home():
     return render_template("index.html", docs=docs)
 
 
+
 @app.route("/create", methods=['GET', 'POST'])
 def create_post():
     if request.method == 'POST':
@@ -68,6 +63,7 @@ def create_post():
         db.game_store.insert_one(docs)
     return render_template('create.html')
  
+
 
 @app.route("/search", methods=["GET"])
 def search_product():
@@ -110,6 +106,39 @@ def show_product():
     docs = db.game_store.find({})
     return render_template("game_display.html", docs=docs)
 
+@app.route("/edit_game/<game_id>", methods=["GET", "POST"])
+def edit_game(game_id):
+    """
+    Route for GET and POST requests to the edit a game page.
+    Displays a form to edit an existing game for sale.
+    """
+    if request.method == "GET":
+        docs = db.game_store.find_one({"_id": ObjectId(game_id)})
+        return render_template("templates/edit.html", docs=docs)
+
+    if request.method == "POST":
+        name = request.form["name"]
+        price = float(request.form["price"])
+        description = request.form["description"]
+
+        # Retrieve the existing created_date
+        existing_game = db.game_store.find_one({"_id": ObjectId(game_id)})
+        created_date = existing_game.get("created_date")
+
+        # Update the document with new game data
+        update_game = {
+            "name": name,
+            "price": price,
+            "created_date": created_date,  # Use existing created_date
+            "edited_date": datetime.datetime.utcnow(),  # Update edited_at timestamp
+            "description": description
+        }
+
+        # Update the document in the database
+        db.game_store.update_one({"_id": ObjectId(game_id)}, {"$set": update_game})
+
+        return redirect(url_for("home"))
+
 
 # route to handle any errors
 @app.errorhandler(Exception)
@@ -123,7 +152,6 @@ def handle_error(e):
 @app.route("/aboutus", methods=['GET'])
 def aboutus():
     return render_template("aboutus.html")
-
 
 if __name__ == "__main__":
     # use the PORT environment variable, or default to 5000

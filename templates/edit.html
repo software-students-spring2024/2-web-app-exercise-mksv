@@ -5,16 +5,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Edit Game: {{ game.name }}</h1>
+    <h1>Edit Game: {{ doc.name }}</h1>
     <form method="post">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" value="{{ game.name }}"><br><br>
+        <input type="text" id="name" name="name" value="{{ doc.name }}"><br><br>
 
         <label for="price">Price:</label><br>
-        <input type="text" id="price" name="price" value="{{ game.price }}"><br><br>
+        <input type="text" id="price" name="price" value="{{ doc.price }}"><br><br>
 
-        <label for="quantity">Quantity:</label><br>
-        <input type="number" id="quantity" name="quantity" value="{{ game.quantity }}"><br><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description">{{ doc.description }}</textarea><br><br>
 
         <button type="submit">Update Game</button>
     </form>
