@@ -41,6 +41,7 @@
     </form>
 </div>
 
+
 <!-- Game Listings -->
 <section class="game-listing">
     {% if docs %}
@@ -51,6 +52,12 @@
           <p>Price: ${{ doc.price }}</p>
           <p>Added on: {{ doc.created_date }}</p>
           <p>Edited on: {{ doc.edited_date }}</p>
+
+          <!-- Edit Button -->
+          <form action="/edit_game/{{ doc._id }}" method="GET">
+            <button type="submit">Edit</button>
+          </form>
+
         </div>
       {% endfor %}
     {% else %}

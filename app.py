@@ -104,6 +104,48 @@ def search_product():
     response.headers['Cache-Control'] = 'no-store'
     return response
 
+@app.route("/delete", methods=['GET', 'POST'])
+def delete_product():
+    if request.method == 'POST':
+        game_name = request.form.get("name")
+        db.game_store.delete_one({"name": game_name})
+    return render_template('delete.html')
+
+
+@app.route("/edit_game/<game_id>", methods=["GET", "POST"])
+def edit_game(game_id):
+    """
+    Route for GET and POST requests to the edit a game page.
+    Displays a form to edit an existing game for sale.
+    """
+    if request.method == "GET":
+        docs = db.game_store.find_one({"_id": ObjectId(game_id)})
+        return render_template("templates/edit.html", docs=docs)
+
+    if request.method == "POST":
+        name = request.form["name"]
+        price = float(request.form["price"])
+        description = request.form["description"]
+
+        # Retrieve the existing created_date
+        existing_game = db.game_store.find_one({"_id": ObjectId(game_id)})
+        created_date = existing_game.get("created_date")
+
+        # Update the document with new game data
+        update_game = {
+            "name": name,
+            "price": price,
+            "created_date": created_date,  # Use existing created_date
+            "edited_date": datetime.datetime.utcnow(),  # Update edited_at timestamp
+            "description": description
+        }
+
+        # Update the document in the database
+        db.game_store.update_one({"_id": ObjectId(game_id)}, {"$set": update_game})
+
+        return redirect(url_for("home"))
+
+
     
 @app.route("/games", methods=['GET'])
 def show_product():
