@@ -164,6 +164,12 @@ nav a:hover {
 
 h3 {
   text-align: center;
+  font-size: 24px; 
+  color: #a69d9d;
+  font-weight: bold; 
+  margin-top: 10px; 
+  text-transform: uppercase; 
+  font-style: italic;
 }
 
 h5 {
