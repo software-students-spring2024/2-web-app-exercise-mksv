@@ -95,21 +95,24 @@ def edit_game(game_id):
     Displays a form to edit an existing game for sale.
     """
     if request.method == "GET":
-        game = db.game_store.find_one({"_id": ObjectId(game_id)})
-        return render_template("templates/edit.html", game=game)
+        docs = db.game_store.find_one({"_id": ObjectId(game_id)})
+        return render_template("templates/edit.html", docs=docs)
 
     if request.method == "POST":
         name = request.form["name"]
-        price = float(request.form["price"])  # Convert price to float
-        quantity = int(request.form["quantity"])  # Convert quantity to int
+        price = float(request.form["price"])
         description = request.form["description"]
+
+        # Retrieve the existing created_date
+        existing_game = db.game_store.find_one({"_id": ObjectId(game_id)})
+        created_date = existing_game.get("created_date")
 
         # Update the document with new game data
         update_game = {
             "name": name,
             "price": price,
-            "quantity": quantity,
-            "edited_at": datetime.datetime.utcnow(),  # Update edited_at timestamp
+            "created_date": created_date,  # Use existing created_date
+            "edited_date": datetime.datetime.utcnow(),  # Update edited_at timestamp
             "description": description
         }
 
@@ -138,4 +141,3 @@ if __name__ == "__main__":
     # import logging
     # logging.basicConfig(filename='/home/ak8257/error.log',level=logging.DEBUG)
     app.run(port=FLASK_PORT)
-

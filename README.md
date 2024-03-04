@@ -15,7 +15,7 @@ The product vision is to develop a user-friendly web application that empowers a
 5. As an admin/seller, I want the capability to edit game information of listed items for accurate representation and if updated information is needed. 
 6. As an admin/seller, I want the ability to delete items from my sales inventory to maintain an up-to-date and organized listing. 
 7. As an admin/seller, I desire an aesthetically pleasing design for my web app to enhance the user experience. 
-8. As an admin/seller, I want the layout of the app to be intutiive and have no glitches. 
+8. As an admin/seller, I want the layout of the app to be intutiive and have no glitches when naviagting between pages. 
 
 Stakeholder Feedback: If you were an admin using this application to sell video games, what would you expect/ want to see from the application? 
 - 
