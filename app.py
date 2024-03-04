@@ -104,14 +104,6 @@ def search_product():
     response.headers['Cache-Control'] = 'no-store'
     return response
 
-@app.route("/delete", methods=['GET', 'POST'])
-def delete_product():
-    if request.method == 'POST':
-        game_name = request.form.get("name")
-        db.game_store.delete_one({"name": game_name})
-    return render_template('delete.html')
-
-
 @app.route("/delete", methods=["GET", "POST"])
 def delete_game():
     
