@@ -3,7 +3,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: rgb(0, 0, 0); 
+
+  background-color: #000000; 
+
   color: #000000;
 }
 
@@ -70,7 +72,9 @@ nav a:hover {
 
 .search-filter-section button {
   padding: 10px 15px;
+
   background-color: #000000;
+
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -153,4 +157,96 @@ nav a:hover {
 
 .text {
   color: #ffffff;
+
 }
+.content {
+  color: #fff;
+}
+
+.content p {
+  color: black;
+}
+
+h3 {
+  text-align: center;
+  font-size: 24px; 
+  color: #a69d9d;
+  font-weight: bold; 
+  margin-top: 10px; 
+  text-transform: uppercase; 
+  font-style: italic;
+}
+
+h5 {
+text-align: center;
+font-style: italic;
+}
+
+input[type="text"] {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+input[type="number"] {
+  width: 10%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 75%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: green;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(103, 206, 1);
+  color:#333;
+}
+
+.todo {
+  background-color: #757575;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.todo p{
+  margin: 0;
+}
+
+.todo i {
+  color: #888;
+}
+
+.content form {
+  margin: 0 auto;
+  width: 600px;
+  padding: 20px;
+  background-color: #eaeaea;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 800px) {
+    .box{
+        position: static;
+        width: 100%;
+    }
+    form{
+        width: 100%;
+    }
+}
+

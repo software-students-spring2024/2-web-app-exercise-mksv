@@ -1,4 +1,3 @@
-
 import os
 import datetime
 from flask import Flask, render_template, request, redirect, url_for, make_response
@@ -46,6 +45,25 @@ def home():
         "created_date", -1
     ).limit(12) 
     return render_template("index.html", docs=docs)
+
+
+
+@app.route("/create", methods=['GET', 'POST'])
+def create_post():
+    if request.method == 'POST':
+        game_name = request.form.get("name")
+        game_price = request.form.get("price")
+        game_description = request.form.get("description")
+        docs = {
+                "name": game_name,
+                "price": game_price,
+                "description": game_description,
+                "created_date": datetime.datetime.utcnow()
+        }
+        db.game_store.insert_one(docs)
+    return render_template('create.html')
+ 
+
 
 @app.route("/search", methods=["GET"])
 def search_product():
@@ -120,6 +138,7 @@ def edit_game(game_id):
         db.game_store.update_one({"_id": ObjectId(game_id)}, {"$set": update_game})
 
         return redirect(url_for("home"))
+
 
 # route to handle any errors
 @app.errorhandler(Exception)
