@@ -112,6 +112,17 @@ def delete_product():
     return render_template('delete.html')
 
 
+@app.route("/delete", methods=["GET", "POST"])
+def delete_game():
+    
+    if request.method == "POST":
+        game_name = request.form.get("name")
+        db.game_store.delete_one({"name": game_name})
+        return redirect(url_for("home"))
+    return render_template("delete.html")
+
+
+
 @app.route("/edit_game/<game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
     """
@@ -120,7 +131,7 @@ def edit_game(game_id):
     """
     if request.method == "GET":
         docs = db.game_store.find_one({"_id": ObjectId(game_id)})
-        return render_template("templates/edit.html", docs=docs)
+        return render_template("edit.html", docs=docs)
 
     if request.method == "POST":
         name = request.form["name"]
@@ -174,3 +185,8 @@ if __name__ == "__main__":
     # import logging
     # logging.basicConfig(filename='/home/ak8257/error.log',level=logging.DEBUG)
     app.run(port=FLASK_PORT)
+
+"""a
+
+
+"""
