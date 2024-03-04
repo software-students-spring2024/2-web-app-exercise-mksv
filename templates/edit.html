@@ -12,18 +12,18 @@
             <br>
             <p>
                 <label for="content">Enter name:</label>
-                <input class="nameBar" type="text" name="name" placeholder="enter name..." size=10 required>
+                <input class="nameBar" type="text" name="name" value="{{docs.name}}"/>
             </p>
             <br>
             <p>
                 <label for="content">Price: </label>
-                <input type="number" name="price" min="1" required/>
+                <input type="number" name="price" value="{{docs.price}}" min="1" required/>
             </p>
             <br>
             <p>
                 <label for="content">Enter game description: </label>
             </p>
-            <textarea type="text" name="description" placeholder="enter description..." required rows="9" cols="75"></textarea>
+            <textarea type="text" name="description" value="{{ docs.description}}" ></textarea>
             <br><br><br><br>
             <button onclick="myalert()" type="submit">Submit</button>
             <br><br>

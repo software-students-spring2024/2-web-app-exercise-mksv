@@ -127,7 +127,7 @@ def edit_game(game_id):
 
     if request.method == "POST":
         name = request.form["name"]
-        price = float(request.form["price"])
+        price = int(request.form["price"])
         description = request.form["description"]
 
         # Retrieve the existing created_date
@@ -178,7 +178,9 @@ if __name__ == "__main__":
     # logging.basicConfig(filename='/home/ak8257/error.log',level=logging.DEBUG)
     app.run(port=FLASK_PORT)
 
-"""a
+"""
+a
 
-
+a
+a
 """
