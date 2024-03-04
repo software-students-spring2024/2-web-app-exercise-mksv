@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Store Admin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">GameStore Admin</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/games">Games</a>
+            <a href="/create"> Add game</a>
+            <a href="/delete">Delete Game</a>
+            <a href="/aboutus">About Us</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 GameStore. All rights reserved by team mksv. <a href="https://github.com/software-students-spring2024/2-web-app-exercise-mksv"
+      >Available on Github</a
+    ></p>
+    
+</footer>
+
+</body>
+</html>
