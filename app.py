@@ -52,6 +52,23 @@ def home():
     ).limit(12) 
     return render_template("index.html", docs=docs)
 
+
+@app.route("/create", methods=['GET', 'POST'])
+def create_post():
+    if request.method == 'POST':
+        game_name = request.form.get("name")
+        game_price = request.form.get("price")
+        game_description = request.form.get("description")
+        docs = {
+                "name": game_name,
+                "price": game_price,
+                "description": game_description,
+                "created_date": datetime.datetime.utcnow()
+        }
+        db.game_store.insert_one(docs)
+    return render_template('create.html')
+ 
+
 @app.route("/search", methods=["GET"])
 def search_product():
     price_filter_mapping = {
