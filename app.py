@@ -52,6 +52,16 @@ def home():
     ).limit(12) 
     return render_template("index.html", docs=docs)
 
+@app.route("/create", methods=['GET', 'POST'])
+def create_post():
+    if request.method == 'POST':
+        game_name = request.form.get("name")
+        game_price = request.form.get("price")
+        game_description = request.form.get("description")
+    docs = {"name": game_name, "price": game_price, "description": game_description, "created_date": datetime.datetime.utcnow()}
+    db.game_store.insert_one(docs)
+    return render_template('create.html', docs=docs)
+
 @app.route("/search", methods=["GET"])
 def search_product():
     price_filter_mapping = {
@@ -107,20 +117,6 @@ def handle_error(e):
 def aboutus():
     return render_template("aboutus.html")
 
-
-@app.route("/add", methods=['GET', 'POST'])
-def add():
-    if request.method == 'POST':
-        name = request.form['name']
-        price = request.form['price']
-        description = request.form['description']
-    docs = {'name': name, 'price': price, 'description': description, "created_date": datetime.datetime.utcnow()}
-    db.game_store.insert_one(docs)
-    #docs = db.game_store.find()
-    #return render_template('add.html', docs=docs)
-    return redirect(
-        url_for("home")
-    )
 
 if __name__ == "__main__":
     # use the PORT environment variable, or default to 5000
