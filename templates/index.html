@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Game Store{% endblock %}
+{% block content %}
+
+
+<div class="container">
+    <div class="subtitle">Game Search</div>
+</div>
+
+
+
+
+<div class="search-filter-section">
+    <form action="/search" method="GET">
+
+        <input type="text" name="search" placeholder="Search games..." aria-label="Search games">
+        
+
+        <select name="price_filter" aria-label="Filter by price">
+            <option value="">Search by Price</option>
+            <option value="low_high">Price Low to High</option>
+            <option value="high_low">Price High to Low</option>
+        </select>
+        
+
+        <select name="created_date_filter" aria-label="Filter by date created">
+            <option value="">Search by Created Date</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+
+
+        <select name="edited_date_filter" aria-label="Filter by date edited">
+            <option value="">Search by Last Edited Date</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+        </select>
+        
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+
+<!-- Game Listings -->
+<section class="game-listing">
+    {% if docs %}
+      {% for doc in docs %}
+        <div class="game-item">
+          <h2>{{ doc.name }}</h2>
+          <p>{{ doc.description }}</p>
+          <p>Price: ${{ doc.price }}</p>
+          <p>Added on: {{ doc.created_date }}</p>
+          <p>Edited on: {{ doc.edited_date }}</p>
+
+          <!-- Edit Button -->
+          <form action="/edit/{{ doc._id }}" method="GET">
+            <button type="submit">Edit</button>
+          </form>
+
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No games found.</p>
+    {% endif %}
+  </section>
+{% endblock %}

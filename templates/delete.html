@@ -1,22 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Game</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Delete Game</h1>
-    <form method="post">
-        <label for="title">Game Title:</label><br>
-        
-        <select name="title" id="title">
-            <option value="Game 1">Game 1</option>
-            <option value="Game 2">Game 2</option>
-            <option value="Game 3">Game 3</option>
+{% extends 'base.html' %}
 
-        </select><br>
+{% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
 
-        <button type="submit">Update Game</button>
-    </form>
-</body>
-</html>
+    <div class="content">
+        <div class="box">
+        <h3> DELETE GAME </h3> 
+        <h5> Please note that titles are case-sensitive </h5>
+        <form method="POST">
+            <br>
+            <p>
+                <label for="content">Enter name of game to be deleted:</label>
+                <input class="nameBar" type="text" name="name" placeholder="enter name...">
+            </p>
+            <br><br>
+            <button onclick="myalert()" type="submit">Submit</button>
+            <br><br>
+
+        </form>
+        <br><br>
+        </div>
+
+    </div>
+    <br> <br> <br>
+
+    <script>
+        function myalert() {
+            alert("game was deleted");
+        }
+    </script>
+    
+{% endblock %}
