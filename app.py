@@ -57,7 +57,7 @@ def home():
 def create_post():
     if request.method == 'POST':
         game_name = request.form.get("name")
-        game_price = request.form.get("price")
+        game_price = int(request.form.get("price"))
         game_description = request.form.get("description")
         docs = {
                 "name": game_name,
