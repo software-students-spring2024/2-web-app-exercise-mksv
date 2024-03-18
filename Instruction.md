@@ -1,0 +1,1 @@
+To run this program, first, make sure MongoDB is running and set up the virtual enviroment according to slides (make sure Flask and pymongo are installed). Then, open the terminal, type "python3 app.py" to run the program. Open a browser, you can find the web on "http://127.0.0.1:10001/".
